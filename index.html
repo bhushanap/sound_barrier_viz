@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Segment Intesection</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="myCanvas"></canvas>
+    <script>
+        const ctx = myCanvas.getContext("2d");
+        myCanvas.width = window.innerWidth;
+        myCanvas.height = window.innerHeight;
+
+        
+
+        let t = 0;
+
+        animate();
+
+        function animate() {
+            ctx.clearRect(0,0,myCanvas.width,myCanvas.height);
+            Mach = 1;
+            x=t*(myCanvas.width+30)-30;
+            radius = (myCanvas.width+30)/Mach;
+            ctx.beginPath();
+            ctx.rect(x,myCanvas.height/2,30,10);
+            ctx.fill();
+            res = 20
+            for(n=0;n<=t*res;n++){
+                ctx.beginPath();
+                ctx.arc(((myCanvas.width+30)*n/res),myCanvas.height/2,radius*((-n/res)+t),0,2*Math.PI);
+                ctx.stroke();
+            }
+            
+
+
+
+            if (t > 1) {
+                t = 0;
+            }
+            else {
+                t += 0.01;
+            }
+            requestAnimationFrame(animate);
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
